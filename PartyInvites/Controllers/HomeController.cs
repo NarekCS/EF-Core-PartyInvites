@@ -29,6 +29,7 @@ namespace PartyInvites.Controllers
 
         public IActionResult Thanks(GuestResponse response) => View(response);
 
-        public IActionResult ListResponses() => View(context.Responses.OrderByDescending(r => r.WillAttend));
+        public IActionResult ListResponses(string searchTerm = "555-123-5678") => 
+            View(context.Responses.Where(r => r.Phone == searchTerm).OrderByDescending(r => r.WillAttend));
     }
 }
